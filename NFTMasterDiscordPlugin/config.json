@@ -1,0 +1,15 @@
+{
+    "token": "",
+    
+    "prefix": "!",
+    "adminRole": "",
+
+    "_note_": "The columns are: id, tag, wallet",
+    "tableName": "",
+    "dbConfig": {
+        "host": "",
+        "user": "",
+        "password": "",
+        "database": ""
+    }
+}

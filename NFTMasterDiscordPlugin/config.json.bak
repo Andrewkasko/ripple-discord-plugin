@@ -1,0 +1,15 @@
+{
+    "token": "BOT TOKEN",
+    
+    "prefix": "!",
+    "adminRole": "ROLE ID",
+
+    "_note_": "The columns are: id, tag, wallet",
+    "tableName": "TABLE NAME",
+    "dbConfig": {
+        "host": "localhost",
+        "user": "USERNAME",
+        "password": "PASSWORD",
+        "database": "DATABASE NAME"
+    }
+}
