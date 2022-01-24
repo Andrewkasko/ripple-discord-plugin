@@ -1,5 +1,7 @@
 // Packages
 const { Client, Intents, MessageEmbed } = require('discord.js');
+const { XummSdk, XummTypes } = require('xumm-sdk');
+const Sdk = new XummSdk()
 const client = new Client({intents:[
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES
@@ -11,6 +13,16 @@ const { token, prefix, adminRole, dbConfig, tableName } = require('./config.json
 // DB
 const mysql = require('mysql2');
 const connection = mysql.createConnection(dbConfig);
+
+// XUMM
+async function XummSignIn() {
+    const request = {
+        "TransactionType": "SignIn"
+    }
+    const payload = await Sdk.payload.create(request, true)
+    WriteToLog(payload)
+    return payload;
+}
 
 // functions
 async function pushData(id, tag, wallet) {
@@ -52,14 +64,14 @@ client.on("messageCreate", async message => {
     md = message.content.split(" ");
 
     // commands
-    if(msg.startsWith(`${prefix}wallet`)) {
+    if(msg.startsWith(`${prefix}Whitelist.Verify`)) {
 
         // wallet entered?
         if(!md[1] || !md[1].startsWith('0x') || md[1].length != 42) {
             embed = new MessageEmbed()
                 .setColor('DARK_RED')
                 .setAuthor(message.author.tag, message.author.displayAvatarURL())
-                .setDescription(`Invalid or missing token. E.g. ${prefix}token 0x0000000000000000000000000000000000000000`)
+                .setDescription(`Invalid or missing token. E.g. ${prefix}token r.........................`)
             return message.reply({embeds:[embed]});
         }
 
